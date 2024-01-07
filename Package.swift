@@ -4,7 +4,7 @@
 import PackageDescription
 
 let package = Package(
-    name: "PerplexityKit",
+    name: "swift-perplexity",
     platforms: [
         .iOS(.v16),
         .macOS(.v13),
@@ -12,10 +12,10 @@ let package = Package(
         .tvOS(.v16),
     ],
     products: [
-        .library(name: "PerplexityKit", targets: ["PerplexityKit"]),
+        .library(name: "Perplexity", targets: ["Perplexity"]),
     ],
     targets: [
-        .target(name: "PerplexityKit"),
-        .testTarget(name: "PerplexityKitTests", dependencies: ["PerplexityKit"]),
+        .target(name: "Perplexity"),
+        .testTarget(name: "PerplexityTests", dependencies: ["Perplexity"]),
     ]
 )

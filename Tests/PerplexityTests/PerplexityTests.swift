@@ -1,7 +1,7 @@
 import XCTest
-@testable import PerplexityKit
+@testable import Perplexity
 
-final class PerplexityKitTests: XCTestCase {
+final class PerplexityTests: XCTestCase {
     func testExample() throws {
         // XCTest Documentation
         // https://developer.apple.com/documentation/xctest
