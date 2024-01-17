@@ -6,7 +6,7 @@ public final class PerplexityClient {
         public let host: URL
         public let token: String
         
-        init(host: URL = URL(string: "https://api.perplexity.ai")!, token: String) {
+        public init(host: URL = URL(string: "https://api.perplexity.ai")!, token: String) {
             self.host = host
             self.token = token
         }
