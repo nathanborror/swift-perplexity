@@ -55,6 +55,7 @@ public final class PerplexityClient {
                 "pplx-70b-online",
                 "llama-2-70b-chat",
                 "codellama-34b-instruct",
+                "codellama-70b-instruct",
                 "mistral-7b-instruct",
                 "mixtral-8x7b-instruct",
             ]
