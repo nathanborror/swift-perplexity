@@ -49,12 +49,10 @@ public final class PerplexityClient {
     public func models() async throws -> ModelListResponse {
         .init(
             models: [
-                "pplx-7b-chat",
-                "pplx-70b-chat",
-                "pplx-7b-online",
-                "pplx-70b-online",
-                "llama-2-70b-chat",
-                "codellama-34b-instruct",
+                "sonar-small-chat",
+                "sonar-medium-chat",
+                "sonar-small-online",
+                "sonar-medium-online",
                 "codellama-70b-instruct",
                 "mistral-7b-instruct",
                 "mixtral-8x7b-instruct",
