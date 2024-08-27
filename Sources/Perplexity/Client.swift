@@ -6,8 +6,8 @@ public final class PerplexityClient {
         public let host: URL
         public let token: String
         
-        public init(host: URL = URL(string: "https://api.perplexity.ai")!, token: String) {
-            self.host = host
+        public init(host: URL? = nil, token: String) {
+            self.host = host ?? Defaults.apiHost
             self.token = token
         }
     }
@@ -16,10 +16,6 @@ public final class PerplexityClient {
     
     public init(configuration: Configuration) {
         self.configuration = configuration
-    }
-    
-    public convenience init(token: String) {
-        self.init(configuration: .init(token: token))
     }
     
     // Chats
@@ -47,17 +43,7 @@ public final class PerplexityClient {
     // Models
     
     public func models() async throws -> ModelListResponse {
-        .init(
-            models: [
-                "sonar-small-chat",
-                "sonar-medium-chat",
-                "sonar-small-online",
-                "sonar-medium-online",
-                "codellama-70b-instruct",
-                "mistral-7b-instruct",
-                "mixtral-8x7b-instruct",
-            ]
-        )
+        .init(models: Defaults.models)
     }
     
     // Private
