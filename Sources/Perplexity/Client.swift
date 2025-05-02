@@ -9,10 +9,20 @@ public final class Client {
 
     internal(set) public var session: URLSession
 
+    private let encoder: JSONEncoder
+    private let decoder: JSONDecoder
+
     public init(session: URLSession = URLSession(configuration: .default), host: URL? = nil, apiKey: String) {
         self.session = session
         self.host = host ?? Self.defaultHost
         self.apiKey = apiKey
+        self.encoder = JSONEncoder()
+        self.decoder = JSONDecoder()
+        self.decoder.dateDecodingStrategy = .custom { decoder in
+            let container = try decoder.singleValueContainer()
+            let dateInt = try container.decode(Int.self)
+            return Date(timeIntervalSince1970: TimeInterval(dateInt))
+        }
     }
 
     public enum Error: Swift.Error, CustomStringConvertible {
@@ -102,7 +112,7 @@ extension Client {
     private func makeAsyncRequest<Body: Codable, Response: Codable>(path: String, method: String, body: Body) -> AsyncThrowingStream<Response, Swift.Error> {
         var request = makeRequest(path: path, method: method)
         request.httpBody = try? encoder.encode(body)
-        
+
         return AsyncThrowingStream { continuation in
             let session = StreamingSession<Response>(session: session, request: request)
             session.onReceiveContent = {_, object in
@@ -116,20 +126,5 @@ extension Client {
             }
             session.perform()
         }
-    }
-
-    private var encoder: JSONEncoder {
-        let encoder = JSONEncoder()
-        return encoder
-    }
-
-    private var decoder: JSONDecoder {
-        let decoder = JSONDecoder()
-        decoder.dateDecodingStrategy = .custom { decoder in
-            let container = try decoder.singleValueContainer()
-            let dateInt = try container.decode(Int.self)
-            return Date(timeIntervalSince1970: TimeInterval(dateInt))
-        }
-        return decoder
     }
 }
