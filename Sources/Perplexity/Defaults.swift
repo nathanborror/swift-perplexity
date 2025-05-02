@@ -2,8 +2,6 @@ import Foundation
 
 public struct Defaults {
     
-    public static let apiHost = URL(string: "https://api.perplexity.ai")!
-    
     public static let chatModel = "llama-3.1-sonar-large-128k-chat"
     
     public static let models: [Model] = [
