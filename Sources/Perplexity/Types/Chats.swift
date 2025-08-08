@@ -3,14 +3,14 @@ import Foundation
 public struct ChatRequest: Codable {
     public var model: String
     public var messages: [Message]
-    public var temperature: Float?
-    public var topP: Float?
+    public var temperature: Double?
+    public var topP: Double?
     public var topK: UInt?
     public var maxTokens: Int?
     public var stream: Bool?
-    public var presencePenalty: Float?
-    public var frequencyPenalty: Float?
-    
+    public var presencePenalty: Double?
+    public var frequencyPenalty: Double?
+
     enum CodingKeys: String, CodingKey {
         case model
         case messages
@@ -23,8 +23,8 @@ public struct ChatRequest: Codable {
         case frequencyPenalty = "frequency_penalty"
     }
     
-    public init(model: String, messages: [Message], temperature: Float? = nil, topP: Float? = nil, topK: UInt? = nil,
-                maxTokens: Int? = nil, stream: Bool? = nil, presencePenalty: Float? = nil, frequencyPenalty: Float? = nil) {
+    public init(model: String, messages: [Message], temperature: Double? = nil, topP: Double? = nil, topK: UInt? = nil,
+                maxTokens: Int? = nil, stream: Bool? = nil, presencePenalty: Double? = nil, frequencyPenalty: Double? = nil) {
         self.model = model
         self.messages = messages
         self.temperature = temperature
